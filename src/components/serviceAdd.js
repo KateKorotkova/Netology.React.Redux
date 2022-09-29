@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux';
-import {changeServiceField, addService, editService} from '../actions/creators';
+import {changeServiceField, addService, editService} from '../store/actions/creators';
 
 
 export default function ServiceAdd() {
@@ -17,6 +17,7 @@ export default function ServiceAdd() {
         evt.preventDefault();
         if (!item.id) {
             dispatch(addService(item.name, item.price));
+            clearForm(dispatch);
             return;
         }
         dispatch(editService(item.id, item.name, item.price));
@@ -25,19 +26,25 @@ export default function ServiceAdd() {
 
     const handleCancel = evt => {
         evt.preventDefault();
-        dispatch(changeServiceField("name", ''));
-        dispatch(changeServiceField("price", ''));
-        dispatch(changeServiceField("id", ''));
+        clearForm(dispatch);
     }
     
 
     return (
         <form onSubmit={handleSubmit}>
             <input name='name' onChange={handleInputChange} value={item.name} />
-            <input name='price' onChange={handleInputChange} value={item.price}/>
+            <input name='price' type="number" onChange={handleInputChange} value={item.price}/>
             <button type='submit'>Save</button>
             <button onClick={handleCancel}>Cancel</button>
         </form>
     );
+}
+
+
+
+function clearForm(dispatch) {
+    dispatch(changeServiceField("name", ''));
+    dispatch(changeServiceField("price", ''));
+    dispatch(changeServiceField("id", ''));
 }
    

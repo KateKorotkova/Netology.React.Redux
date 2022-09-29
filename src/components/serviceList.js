@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux';
-import {removeService, changeServiceField} from '../actions/creators';
+import {removeService, changeServiceField} from '../store/actions/creators';
 
 
 export default function ServiceList({items}) {

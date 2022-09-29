@@ -1,6 +1,6 @@
 import { combineReducers, legacy_createStore, compose } from 'redux';
-import serviceListReducer from '../reducers/serviceListReducer';
-import serviceAddReducer from '../reducers/serviceAddReducer';
+import serviceListReducer from './reducers/serviceListReducer';
+import serviceAddReducer from './reducers/serviceAddReducer';
 
 
 const ReactReduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
